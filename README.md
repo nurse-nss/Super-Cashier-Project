@@ -20,10 +20,6 @@ Sebuah program kasir dengan alur berikut ini:
     - 8% untuk total transaksi diatas Rp. 300.000
     - 10% untuk total transaksi diatas Rp. 500.000
 
-## Alur Program / Flow Chart
-
-Berikut alur program sistem dari awal ketika pertama kali dijalankan hingga akhir ketika program dimatikan. Terdapat beberapa menu yang dapat dipilih oleh pengguna dimana kemudian sistem akan menjalankan perintah yang dipilih.
-
 
 ## Penjelasan Fungsi Python
 

@@ -75,9 +75,7 @@ Berikut penjelasan mengenai setiap method yang ada di dalam class `Transaction`.
           nama(str)= nama barang sebelum diganti
           update_nama (str) = nama barang yang telah dirubah'''
 
-          temp = self.trans[nama]
-          self.trans.pop(nama)
-          self.trans.update({update_name: temp})
+          self.trans[nama][0]=update_nama
 
           #Data yang ditampilkan setelah di update
           self.print_transaksi()
@@ -97,8 +95,8 @@ Berikut penjelasan mengenai setiap method yang ada di dalam class `Transaction`.
             return("Masukkan Angka!")
           else:
               #Input data ke dalam dictionary
-              self.transaksi[nama][0] = update_jumlah
-              self.transaksi[nama][2] = update_jumlah*self.transaksi[nama][1]
+              self.trans[nama][1] = update_jumlah
+              self.trans[nama][3] = update_jumlah*self.trans[nama][2]
               #data yang telah diubah
               self.print_transaksi()
               return(f"Jumlah Barang {nama} dirubah menjadi {update_jumlah}")
@@ -116,8 +114,8 @@ Berikut penjelasan mengenai setiap method yang ada di dalam class `Transaction`.
             return("Masukkan Angka!")
           else:
               #Input data ke dalam dictionary
-              self.transaksi[nama][1] = update_harga
-              self.transaksi[nama][2] = update_harga*self.transaksi[nama][0]
+              self.trans[nama][2] = update_harga
+              self.trans[nama][3] = update_harga*self.trans[nama][1]
               #data yang telah diubah
               self.print_transaksi()
               return(f"Harga Barang {nama} dirubah menjadi {update_harga}")
@@ -211,7 +209,7 @@ def cek_transaksi(self) -> bool:
           #hitung total belanja
           total_belanja = 0
           for item in self.trans:
-            total_belanja += self.trans[item][2]
+            total_belanja += self.trans[item][3]
           
           #perhitungan diskon
           if total_belanja > 500_000:
@@ -231,6 +229,7 @@ def cek_transaksi(self) -> bool:
 
           else:
              return(f"Total belanja Anda sebesar Rp{total_belanja}")
+
 ```
 ## Test Case
 

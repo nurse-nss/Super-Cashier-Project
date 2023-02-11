@@ -41,7 +41,7 @@ Berikut penjelasan mengenai setiap method yang ada di dalam class `Transaction`.
           self.trans_valid = False
 ```
 
- - Fungsi untuk **Menambahkan item**
+ - Fungsi untuk **Menambahkan Barang**
 
 ```python
     def add_item(self, nama: str, jumlah: int, harga: float) -> None:
@@ -75,7 +75,9 @@ Berikut penjelasan mengenai setiap method yang ada di dalam class `Transaction`.
           nama(str)= nama barang sebelum diganti
           update_nama (str) = nama barang yang telah dirubah'''
 
-          self.trans[nama][0]=update_nama
+          temp = self.trans[nama]
+          self.trans.pop(nama)
+          self.trans.update({update_name: temp})
 
           #Data yang ditampilkan setelah di update
           self.print_transaksi()
@@ -95,8 +97,8 @@ Berikut penjelasan mengenai setiap method yang ada di dalam class `Transaction`.
             return("Masukkan Angka!")
           else:
               #Input data ke dalam dictionary
-              self.trans[nama][1] = update_jumlah
-              self.trans[nama][3] = update_jumlah*self.trans[nama][2]
+              self.transaksi[nama][0] = update_jumlah
+              self.transaksi[nama][2] = update_jumlah*self.transaksi[nama][1]
               #data yang telah diubah
               self.print_transaksi()
               return(f"Jumlah Barang {nama} dirubah menjadi {update_jumlah}")
@@ -114,8 +116,8 @@ Berikut penjelasan mengenai setiap method yang ada di dalam class `Transaction`.
             return("Masukkan Angka!")
           else:
               #Input data ke dalam dictionary
-              self.trans[nama][2] = update_harga
-              self.trans[nama][3] = update_harga*self.trans[nama][1]
+              self.transaksi[nama][1] = update_harga
+              self.transaksi[nama][2] = update_harga*self.transaksi[nama][0]
               #data yang telah diubah
               self.print_transaksi()
               return(f"Harga Barang {nama} dirubah menjadi {update_harga}")
@@ -209,7 +211,7 @@ def cek_transaksi(self) -> bool:
           #hitung total belanja
           total_belanja = 0
           for item in self.trans:
-            total_belanja += self.trans[item][3]
+            total_belanja += self.trans[item][2]
           
           #perhitungan diskon
           if total_belanja > 500_000:
@@ -229,13 +231,12 @@ def cek_transaksi(self) -> bool:
 
           else:
              return(f"Total belanja Anda sebesar Rp{total_belanja}")
-
 ```
 ## Test Case
 
 Berikut adalah hasil test yang telah dilakukan sesuai dengan test case yang diberikan
 
-### Test Case 1: Menambahkan Item
+### Test Case 1: Menambahkan Barang
 
 Menambahkan dua item baru menggunakan fungsi `add_item()`. Item yang ditambahkan sebagai berikut:
 - Nama item: Ayam Goreng, Qty: 2, Harga: 20000
@@ -254,9 +255,9 @@ tran.print_transaksi()
 | Ayam goreng   |               2 |   20000 |         40000 |
 | Pasta Gigi    |               3 |   15000 |         45000 |
 ```
-### Test Case 2: Menghapus Item
+### Test Case 2: Menghapus Barang
 
-Menghapus item menggunakan fungsi `delete_item()`. Item yang dihapus adalah Pasta Gigi.
+Menghapus barang menggunakan fungsi `delete_item()`. Barang yang dihapus adalah Pasta Gigi.
 ```python
 tran.print_transaksi()
 
@@ -288,7 +289,7 @@ tran.reset_transaksi()
 ```
 ### test Case 4: Menghitung Total Belanja
 
-Menghitung total belanja menggunakan fungsi `total_price()`. Sebelum mengeluarkan output total belanja, akan menampilkan item-item yang dibeli.
+Menghitung total belanja menggunakan fungsi `total_price()`. Sebelum mengeluarkan output total belanja, akan menampilkan barang yang dibeli.
 ```python
 tran.add_item("Ayam goreng", 2, 20_000)
 tran.add_item("Pasta Gigi", 3, 15_000)
@@ -377,6 +378,6 @@ tran.total_price()
 | Susu          |               2 |   10000 |         20000 |
 | Butter        |               5 |   50000 |        250000 |
 Selamat anda mendapat diskon 8% sebesar 24800. Total Belanja anda sebesar Rp285200
-
+```
 ## Conclusion
 Beberapa test case yang dilakukan dalam pengembangan sistem Super Cashier telah berhasil dilakukan dengan hasil yang sesuai.

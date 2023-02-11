@@ -237,3 +237,111 @@ def total_price(self):
           else:
             return(f"masih ada kesalahan")
 ```
+test Case
+## Test Case
+
+Berikut adalah hasil test yang telah dilakukan sesuai dengan test case yang diberikan
+
+### Test Case 1: Menambahkan Item
+
+Menambahkan dua item baru menggunakan fungsi `add_item()`. Item yang ditambahkan sebagai berikut:
+- Nama item: Ayam Goreng, Qty: 2, Harga: 20000
+- Nama item: Pasta Gigi, Qty: 3, Harga: 15000
+
+```python
+tran=Transaction()
+
+tran.add_item("Ayam goreng", 2, 20_000)
+tran.add_item("Pasta Gigi", 3, 15_000)
+
+tran.print_transaksi()
+
+| Nama Barang   |   Jumlah Barang |   Harga |   Total Harga |
+|---------------|-----------------|---------|---------------|
+| Ayam goreng   |               2 |   20000 |         40000 |
+| Pasta Gigi    |               3 |   15000 |         45000 |
+```
+### Test Case 2: Menghapus Item
+
+Menghapus item menggunakan fungsi `delete_item()`. Item yang dihapus adalah Pasta Gigi.
+```python
+tran.print_transaksi()
+
+| Nama Barang   |   Jumlah Barang |   Harga |   Total Harga |
+|---------------|-----------------|---------|---------------|
+| Ayam goreng   |               2 |   20000 |         40000 |
+| Pasta Gigi    |               3 |   15000 |         45000 |
+
+tran.delete_item("Pasta Gigi")
+print()
+tran.print_transaksi()
+
+| Nama Barang   |   Jumlah Barang |   Harga |   Total Harga |
+|---------------|-----------------|---------|---------------|
+| Ayam goreng   |               2 |   20000 |         40000 |
+```
+### Test Case 3: Reset Transaksi
+
+Mereset transaksi menggunakan fungsi `reset_transaction()`.
+```python
+tran.print_transaksi()
+
+| Nama Barang   |   Jumlah Barang |   Harga |   Total Harga |
+|---------------|-----------------|---------|---------------|
+| Ayam goreng   |               2 |   20000 |         40000 |
+
+tran.reset_transaksi()
+'Semua Pesanan Telah Terhapus'
+```
+### test Case 4: Menghitung Total Belanja
+
+Menghitung total belanja menggunakan method `total_price()`. Sebelum mengeluarkan output total belanja, akan menampilkan item-item yang dibeli.
+```python
+tran=Transaction()
+
+tran.add_item("Ayam goreng", 2, 20_000)
+tran.add_item("Pasta Gigi", 3, 15_000)
+
+tran.total_price()
+| Nama Barang   |   Jumlah Barang |   Harga |   Total Harga |
+|---------------|-----------------|---------|---------------|
+| Ayam goreng   |               2 |   20000 |         40000 |
+| Pasta Gigi    |               3 |   15000 |         45000 |
+Total belanja Anda sebesar Rp35000
+```
+### Test Case 5: Mengupdate Nama Item
+
+Mengubah nama item yang sudah diinput ke dalam transaksi menggunakan method `update_name()`.
+
+![Hasil Test Case 5](test-case/test-case-5.png)
+
+## Test Case 6: Mengupdate Jumlah Item
+
+Mengubah jumlah item yang sudah diinput ke dalam transaksi menggunakan method `update_qty()`.
+
+![Hasil Test Case 6](test-case/test-case-6.png)
+
+## Test Case 7: Mengupdate Harga Item
+
+Mengubah harga item yang sudah diinput ke dalam transaksi menggunakan method `update_price()`.
+
+![Hasil Test Case 7](test-case/test-case-7.png)
+
+## Test Case 8: Menghitung Total Belanja dan Diskon
+
+Menghitung total belanja menggunakan method total_price(). Sebelum mengeluarkan output total belanja, akan menampilkan item-item yang dibeli. Sistem akan menampilkan diskon dengan ketentuan
+ - 5% untuk total transaksi diatas Rp. 200.000
+ - 8% untuk total transaksi diatas Rp. 300.000
+ - 10% untuk total transaksi diatas Rp. 500.000
+
+![Hasil Test Case 8](test-case/test-case-8.png)
+
+## Test Case 9: Terdapat Kesalahan Input Saat Check Order
+
+Sistem akan menampilkan pesan kesalahan saat pengecekan order jika ada kesalahan input
+
+![Hasil Test Case 9](test-case/test-case-9.png)
+
+## Conclusion
+
+Sistem Super Cashier berhasil dikembangkan dan telah melewati beberapa test case yang diberikan dengan hasil yang sudah sesuai.

@@ -31,7 +31,7 @@ Berikut penjelasan mengenai setiap method yang ada di dalam class `Transaction`.
  - **Constructor function**
 
 ```python
-class Transaction():
+   class Transaction():
 
       def __init__(self)-> None:
           #inisiasi untuk class Transaction
@@ -44,7 +44,7 @@ class Transaction():
  - Fungsi untuk **Menambahkan item**
 
 ```python
-def add_item(self, nama: str, jumlah: int, harga: float) -> None:
+    def add_item(self, nama: str, jumlah: int, harga: float) -> None:
           '''fungsi untuk menambahkan item ke dalam dictionary transaksi
           nama (str) = nama barang yang dibeli
           jumlah (int) = jumlah barang yang dibeli
@@ -70,7 +70,7 @@ def add_item(self, nama: str, jumlah: int, harga: float) -> None:
 - Fungsi untuk **mengupdate nama** barang di dalam transaksi
 
 ```python
-def update_name(self, nama, update_nama)-> None:
+    def update_name(self, nama, update_nama)-> None:
           '''Fungsi untuk merubah nama barang dalam dictionary.
           nama(str)= nama barang sebelum diganti
           update_nama (str) = nama barang yang telah dirubah'''
@@ -87,7 +87,7 @@ def update_name(self, nama, update_nama)-> None:
  - Fungsi untuk **mengupdate jumlah** barang di dalam transaksi
 
 ```python
-def update_quantity(self, nama, update_jumlah):
+    def update_quantity(self, nama, update_jumlah):
           '''Fungsi untuk merubah jumlah barang dalam dictionary yang sudah diinput.
           nama(string) = nama barang yang akan diubah jumlahnya
           update_jumlah(int) = jumlah barang yang telah diubah''' 
@@ -107,7 +107,7 @@ def update_quantity(self, nama, update_jumlah):
  - Fungsi untuk **mengupdate harga** barang di dalam transaksi
 
 ```python
-def update_price(self, nama, update_harga):
+    def update_price(self, nama, update_harga):
           '''fungsi untuk merubah harga barang dalam dictionary yang telah diinput.
           nama (string) = nama item yang aan diubah harganya
           update_harga (int) = harga yang telah diubah'''
@@ -127,7 +127,7 @@ def update_price(self, nama, update_harga):
  - Fungsi untuk **menghapus barang**
 
 ```python
-def delete_item(self, nama: str)-> None:
+     def delete_item(self, nama: str)-> None:
           '''fungsi untuk menghapus data barang dari dictionary
            nama(str) = nama barang yang akan dihapus'''
 
@@ -153,7 +153,7 @@ def delete_item(self, nama: str)-> None:
  - Fungsi untuk **menghapus seluruh barang** di dalam transaksi
 
 ```python
-def reset_transaksi(self)-> None:
+     def reset_transaksi(self)-> None:
           '''fungsi untuk menghapus data dalam dictionary'''
 
           self.trans.clear()
@@ -163,7 +163,7 @@ def reset_transaksi(self)-> None:
  - Fungsi untuk **menampilkan daftar barang** di dalam transaksi
 
 ```python
-def print_transaksi(self) -> None:
+     def print_transaksi(self) -> None:
           '''Fungsi untuk menampilkan seluruh data yang ada dalam dictionary'''
 
           #Validasi transaksi
@@ -201,43 +201,37 @@ def cek_transaksi(self) -> bool:
  - Fungsi untuk **mengecek total transaksi dan discount**
 
 ```python
-def total_price(self):
+     def total_price(self):
           '''Fungsi untuk menampilkan seluruh pesanan yang ada dalam transaksi'''
 
           #pastikan pesanan valid
-          self.cek_transaksi()
+          self.print_transaksi()
 
           #perhitungan jika mendapatkan diskon
-          if self.trans_valid:
-
-              #hitung total belanja
-              total_belanja = 0
-              for item in self.trans:
-                  total_belanja += self.trans[item][2]
+          #hitung total belanja
+          total_belanja = 0
+          for item in self.trans:
+            total_belanja += self.trans[item][2]
           
-              #perhitungan diskon
-              if total_belanja > 500_000:
-                diskon = int(total_belanja*0.1)
-                total_belanja=int(total_belanja-diskon)
-                return(f"Selamat anda mendapat diskon 10% sebesar {diskon}. Total Belanja anda sebesar Rp{total_belanja}")
+          #perhitungan diskon
+          if total_belanja > 500_000:
+            diskon = int(total_belanja*0.1)
+            total_belanja=int(total_belanja-diskon)
+            return(f"Selamat anda mendapat diskon 10% sebesar {diskon}. Total Belanja anda sebesar Rp{total_belanja}")
 
-              elif total_belanja > 300_000:
-                diskon = int(total_belanja*0.08)
-                total_belanja=int(total_belanja-diskon)
-                return(f"Selamat anda mendapat diskon 8% sebesar {diskon}. Total Belanja anda sebesar Rp{total_belanja}")
+          elif total_belanja > 300_000:
+             diskon = int(total_belanja*0.08)
+             total_belanja=int(total_belanja-diskon)
+             return(f"Selamat anda mendapat diskon 8% sebesar {diskon}. Total Belanja anda sebesar Rp{total_belanja}")
               
-              elif total_belanja > 200_000:
-                diskon = int(total_belanja*0.05)
-                total_belanja=int(total_belanja-diskon)
-                return(f"Selamat anda mendapat diskon 5% sebesar {diskon}. Total Belanja anda sebesar Rp{total_belanja}")
-
-              else:
-                return(f"Total belanja Anda sebesar Rp{total_belanja}")
+          elif total_belanja > 200_000:
+             diskon = int(total_belanja*0.05)
+             total_belanja=int(total_belanja-diskon)
+             return(f"Selamat anda mendapat diskon 5% sebesar {diskon}. Total Belanja anda sebesar Rp{total_belanja}")
 
           else:
-            return(f"masih ada kesalahan")
+             return(f"Total belanja Anda sebesar Rp{total_belanja}")
 ```
-test Case
 ## Test Case
 
 Berikut adalah hasil test yang telah dilakukan sesuai dengan test case yang diberikan
@@ -295,10 +289,8 @@ tran.reset_transaksi()
 ```
 ### test Case 4: Menghitung Total Belanja
 
-Menghitung total belanja menggunakan method `total_price()`. Sebelum mengeluarkan output total belanja, akan menampilkan item-item yang dibeli.
+Menghitung total belanja menggunakan fungsi `total_price()`. Sebelum mengeluarkan output total belanja, akan menampilkan item-item yang dibeli.
 ```python
-tran=Transaction()
-
 tran.add_item("Ayam goreng", 2, 20_000)
 tran.add_item("Pasta Gigi", 3, 15_000)
 
@@ -309,39 +301,83 @@ tran.total_price()
 | Pasta Gigi    |               3 |   15000 |         45000 |
 Total belanja Anda sebesar Rp35000
 ```
-### Test Case 5: Mengupdate Nama Item
+### Test Update Nama Barang
 
-Mengubah nama item yang sudah diinput ke dalam transaksi menggunakan method `update_name()`.
+Mengubah nama item yang sudah diinput ke dalam transaksi menggunakan fungsi `update_name()`.
+```python
+tran = Transaction()
 
-![Hasil Test Case 5](test-case/test-case-5.png)
+tran.add_item("Gula Pasir", 2, 20_000)
+tran.add_item("Susu", 3, 15_000)
 
-## Test Case 6: Mengupdate Jumlah Item
+tran.print_transaksi()
+| Nama Barang   |   Jumlah Barang |   Harga |   Total Harga |
+|---------------|-----------------|---------|---------------|
+| Gula Pasir    |               2 |   20000 |         40000 |
+| Susu          |               3 |   15000 |         45000 |
+
+tran.update_name("Gula Pasir","Gula Merah")
+| Nama Barang   |   Jumlah Barang |   Harga |   Total Harga |
+|---------------|-----------------|---------|---------------|
+| Gula Merah    |               2 |   20000 |         40000 |
+| Susu          |               3 |   15000 |         45000 |
+Merubah nama barang Gula Pasir menjadi Gula Merah
+```
+
+## Test Update Jumlah Barang
 
 Mengubah jumlah item yang sudah diinput ke dalam transaksi menggunakan method `update_qty()`.
+```python
+tran.print_transaksi()
+| Nama Barang   |   Jumlah Barang |   Harga |   Total Harga |
+|---------------|-----------------|---------|---------------|
+| Gula Merah    |               2 |   20000 |         40000 |
+| Susu          |               2 |   10000 |         20000 |
 
-![Hasil Test Case 6](test-case/test-case-6.png)
+tran.update_quantity("Susu", 2)
+| Nama Barang   |   Jumlah Barang |   Harga |   Total Harga |
+|---------------|-----------------|---------|---------------|
+| Gula Merah    |               2 |   20000 |         40000 |
+| Susu          |               2 |   10000 |         20000 |
+Jumlah Barang Susu dirubah menjadi 2
+```
+## Test Update Harga barang
+```python
+tran.print_transaksi()
+| Nama Barang   |   Jumlah Barang |   Harga |   Total Harga |
+|---------------|-----------------|---------|---------------|
+| Gula Merah    |               2 |   20000 |         40000 |
+| Susu          |               2 |   10000 |         20000 |
 
-## Test Case 7: Mengupdate Harga Item
+tran.update_price("Susu",10_000)
+| Nama Barang   |   Jumlah Barang |   Harga |   Total Harga |
+|---------------|-----------------|---------|---------------|
+| Gula Merah    |               2 |   20000 |         40000 |
+| Susu          |               2 |   10000 |         20000 |
+Harga Barang Susu dirubah menjadi 10000
+```
 
-Mengubah harga item yang sudah diinput ke dalam transaksi menggunakan method `update_price()`.
+## Menghitung Total Belanja dengan Diskon
 
-![Hasil Test Case 7](test-case/test-case-7.png)
-
-## Test Case 8: Menghitung Total Belanja dan Diskon
-
-Menghitung total belanja menggunakan method total_price(). Sebelum mengeluarkan output total belanja, akan menampilkan item-item yang dibeli. Sistem akan menampilkan diskon dengan ketentuan
+Menghitung total belanja menggunakan fungsi total_price(). Sebelum mengeluarkan output total belanja, akan menampilkan barang yang dibeli. Sistem akan menampilkan diskon dengan ketentuan
  - 5% untuk total transaksi diatas Rp. 200.000
  - 8% untuk total transaksi diatas Rp. 300.000
  - 10% untuk total transaksi diatas Rp. 500.000
+```python
+tran.print_transaksi()
+| Nama Barang   |   Jumlah Barang |   Harga |   Total Harga |
+|---------------|-----------------|---------|---------------|
+| Gula Merah    |               2 |   20000 |         40000 |
+| Susu          |               2 |   10000 |         20000 |
 
-![Hasil Test Case 8](test-case/test-case-8.png)
-
-## Test Case 9: Terdapat Kesalahan Input Saat Check Order
-
-Sistem akan menampilkan pesan kesalahan saat pengecekan order jika ada kesalahan input
-
-![Hasil Test Case 9](test-case/test-case-9.png)
+tran.add_item("Butter", 5, 50_000)
+tran.total_price()
+| Nama Barang   |   Jumlah Barang |   Harga |   Total Harga |
+|---------------|-----------------|---------|---------------|
+| Gula Merah    |               2 |   20000 |         40000 |
+| Susu          |               2 |   10000 |         20000 |
+| Butter        |               5 |   50000 |        250000 |
+Selamat anda mendapat diskon 8% sebesar 24800. Total Belanja anda sebesar Rp285200
 
 ## Conclusion
-
-Sistem Super Cashier berhasil dikembangkan dan telah melewati beberapa test case yang diberikan dengan hasil yang sudah sesuai.
+Beberapa test case yang dilakukan dalam pengembangan sistem Super Cashier telah berhasil dilakukan dengan hasil yang sesuai.
